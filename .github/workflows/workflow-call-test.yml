@@ -6,9 +6,9 @@ on:
 jobs:
 
   build-custom:
-    uses: stellar/quickstart/.github/workflows/build.yml@8f42f9e369a585659b1e21888568015a3aabb8c3
+    uses: stellar/quickstart/.github/workflows/build.yml@c560f37ce1194f7e4c968faa479e11f856643af2
     with:
-      ref: 8f42f9e369a585659b1e21888568015a3aabb8c3
+      ref: c560f37ce1194f7e4c968faa479e11f856643af2
       test: true
       image_json: |
         {
