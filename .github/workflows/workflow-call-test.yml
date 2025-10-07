@@ -8,7 +8,7 @@ jobs:
   build-custom:
     uses: stellar/quickstart/.github/workflows/build.yml@8f42f9e369a585659b1e21888568015a3aabb8c3
     with:
-      sha: ${{ github.event.pull_request.head.sha || github.sha }}
+      sha: 8f42f9e369a585659b1e21888568015a3aabb8c3
       test: true
       image_json: |
         {
