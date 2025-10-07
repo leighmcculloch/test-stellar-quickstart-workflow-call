@@ -6,7 +6,7 @@ on:
 jobs:
 
   build-custom:
-    uses: stellar/quickstart/.github/workflows/build.yml@14a26375cb8ead8a7f86d56a4f40dc09f09979e9
+    uses: stellar/quickstart/.github/workflows/build.yml@82a9b89b0764e182e06b1b91adf10d1be2992078
     with:
       sha: ${{ github.event.pull_request.head.sha || github.sha }}
       test: true
