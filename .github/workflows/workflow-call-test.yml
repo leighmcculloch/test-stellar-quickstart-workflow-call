@@ -6,9 +6,9 @@ on:
 jobs:
 
   build-custom:
-    uses: stellar/quickstart/.github/workflows/build.yml@67a441b46a63ce65c0ada3180ae1f1ed921348a5
+    uses: stellar/quickstart/.github/workflows/build.yml@65011f6e4e83e0ed23274e60f8b4b74ec9ca656f
     with:
-      ref: 67a441b46a63ce65c0ada3180ae1f1ed921348a5
+      ref: 65011f6e4e83e0ed23274e60f8b4b74ec9ca656f
       images: |
         [
           {
@@ -33,11 +33,9 @@ jobs:
     needs: build-custom
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v4
+    - uses: stellar/quickstart@65011f6e4e83e0ed23274e60f8b4b74ec9ca656f
       with:
-        name: image-quickstart-custom-amd64.tar
-        path: /tmp/
-    - run: docker load -i /tmp/image
-    - run: docker run --platform linux/amd64 -d -p 8000:8000 quickstart:custom-amd64 --local
+        artifact: image-quickstart-custom-amd64.tar
+        tag: custom-amd64
     - run: sleep 10
     - run: curl http://localhost:8000
