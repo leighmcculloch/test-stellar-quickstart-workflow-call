@@ -6,9 +6,9 @@ on:
 jobs:
 
   build-custom:
-    uses: stellar/quickstart/.github/workflows/build.yml@ac4b0e1d4860f6f20c34eca1ae7360fb3216b919
+    uses: stellar/quickstart/.github/workflows/build.yml@3b042e86dac680396f2aa7c7a3492da7cc959680
     with:
-      ref: ac4b0e1d4860f6f20c34eca1ae7360fb3216b919
+      ref: 3b042e86dac680396f2aa7c7a3492da7cc959680
       images: |
         [
           {
@@ -27,6 +27,7 @@ jobs:
             "additional-tests": []
           }
         ]
+      archs: '["amd64"]'
 
   use-custom:
     needs: build-custom
