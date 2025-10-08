@@ -6,26 +6,27 @@ on:
 jobs:
 
   build-custom:
-    uses: stellar/quickstart/.github/workflows/build.yml@c560f37ce1194f7e4c968faa479e11f856643af2
+    uses: stellar/quickstart/.github/workflows/build.yml@ac4b0e1d4860f6f20c34eca1ae7360fb3216b919
     with:
-      ref: c560f37ce1194f7e4c968faa479e11f856643af2
-      test: true
-      image_json: |
-        {
-          "tag": "custom",
-          "config": {
-            "protocol_version_default": 23
-          },
-          "deps": [
-            { "name": "xdr", "repo": "stellar/rs-stellar-xdr", "ref": "v23.0.0" },
-            { "name": "core", "repo": "stellar/stellar-core", "ref": "v23.0.1", "options": { "configure_flags": "--disable-tests" } },
-            { "name": "rpc", "repo": "stellar/stellar-rpc", "ref": "v23.0.1" },
-            { "name": "horizon", "repo": "stellar/go", "ref": "horizon-v23.0.0" },
-            { "name": "friendbot", "repo": "stellar/go", "ref": "horizon-v23.0.0" },
-            { "name": "lab", "repo": "stellar/laboratory", "ref": "main" }
-          ],
-          "additional-tests": []
-        }
+      ref: ac4b0e1d4860f6f20c34eca1ae7360fb3216b919
+      images: |
+        [
+          {
+            "tag": "custom",
+            "config": {
+              "protocol_version_default": 23
+            },
+            "deps": [
+              { "name": "xdr", "repo": "stellar/rs-stellar-xdr", "ref": "v23.0.0" },
+              { "name": "core", "repo": "stellar/stellar-core", "ref": "v23.0.1", "options": { "configure_flags": "--disable-tests" } },
+              { "name": "rpc", "repo": "stellar/stellar-rpc", "ref": "v23.0.1" },
+              { "name": "horizon", "repo": "stellar/go", "ref": "horizon-v23.0.0" },
+              { "name": "friendbot", "repo": "stellar/go", "ref": "horizon-v23.0.0" },
+              { "name": "lab", "repo": "stellar/laboratory", "ref": "main" }
+            ],
+            "additional-tests": []
+          }
+        ]
 
   use-custom:
     needs: build-custom
@@ -33,7 +34,7 @@ jobs:
     steps:
     - uses: actions/download-artifact@v4
       with:
-        name: ${{ needs.build-custom.outputs.image_artifact }}
+        name: image-quickstart-custom-amd64.tar
         path: /tmp/
     - run: docker load -i /tmp/image
     - run: >
