@@ -37,14 +37,6 @@ jobs:
         name: image-quickstart-custom-amd64.tar
         path: /tmp/
     - run: docker load -i /tmp/image
-    - run: >
-        docker run
-        --platform linux/amd64
-        -d
-        -p
-        "8000:8000"
-        --name stellar
-        quickstart
-        --local
+    - run: docker run --platform linux/amd64 -d -p 8000:8000 quickstart --local
     - run: sleep 10
     - run: curl http://localhost:8000
